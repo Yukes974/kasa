@@ -11,7 +11,6 @@ const Error404Title = styled.h1`
   width: 100%;
   height: 263px;
   margin-bottom: 30px;
-  background-color: pink;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
