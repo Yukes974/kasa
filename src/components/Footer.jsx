@@ -4,6 +4,7 @@ import LogoComponent from "./Logo";
 const FooterFont = styled.div`
   display: flex;
   width: 100%;
+  margin-top: 70px;
   padding: 66px 0 29px 0;
   flex-direction: column;
   justify-content: flex-end;

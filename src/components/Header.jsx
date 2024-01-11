@@ -6,6 +6,7 @@ const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin: 40px 0 70px 0;
 `;
 
 const StyledLogo = styled.div`
