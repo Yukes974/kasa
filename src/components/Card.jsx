@@ -23,11 +23,18 @@ const CardTitle = styled.span`
   font-weight: 500;
 `;
 
+const CardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
 function Card(props) {
   return (
     <CardBox>
       <CardTitle>{props.CardTitle}</CardTitle>
-      <img src={props.CardImage} />
+      <CardImage src={props.CardImage} />
     </CardBox>
   );
 }

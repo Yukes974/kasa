@@ -37,6 +37,10 @@ const StyledLink = styled(Link)`
   font-weight: 500;
   line-height: 142.6%; /* 34.224px */
   text-decoration-line: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+  }
 `;
 
 function Header() {

@@ -9,16 +9,16 @@ const FormBanner = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 25px;
-  opacity: 0.3;
   background: #000000;
   mix-blend-mode: darken;
 `;
 
-const CardImage = styled.img`
+const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 25px;
   object-fit: cover;
+  opacity: 0.7;
 `;
 
 const BannerH1 = styled.h1`
@@ -34,8 +34,8 @@ const BannerH1 = styled.h1`
 function Banner(props) {
   return (
     <FormBanner>
-      <CardImage src={props.Source} alt={props.Description} />
-      <BannerH1>{props.Read}</BannerH1>
+      <BannerImage src={props.BannerSource} alt={props.BannerDescription} />
+      <BannerH1>{props.BannerTitle}</BannerH1>
     </FormBanner>
   );
 }

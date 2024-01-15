@@ -12,7 +12,7 @@ const ContainerCard = styled.div`
   background-color: #f6f6f6;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 340px 340px;
+  grid-template-rows: 340px 340px 340px 340px 340px 340px 340px;
   gap: 40px;
 `;
 
@@ -20,13 +20,19 @@ function Home() {
   return (
     <main>
       <Banner
-        Source={banner_home}
-        Description="banner home"
-        Read="Chez vous, partout et ailleurs"
+        BannerSource={banner_home}
+        BannerDescription="banner home"
+        BannerTitle="Chez vous, partout et ailleurs"
       />
       <ContainerCard>
-        {datas.map((logement) => {
-          return <Card CardTitle={logement.title} CardImage={logement.cover} />;
+        {datas.map((logement, index) => {
+          return (
+            <Card
+              Key={`${logement.host.name}-${index}`}
+              CardTitle={logement.title}
+              CardImage={logement.cover}
+            />
+          );
         })}
       </ContainerCard>
     </main>
