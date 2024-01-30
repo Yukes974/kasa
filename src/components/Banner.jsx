@@ -34,8 +34,8 @@ const BannerH1 = styled.h1`
 function Banner(props) {
   return (
     <FormBanner>
-      <BannerImage src={props.BannerSource} alt={props.BannerDescription} />
-      <BannerH1>{props.BannerTitle}</BannerH1>
+      <BannerImage src={props.bannerSource} alt={props.bannerDescription} />
+      <BannerH1>{props.bannerTitle}</BannerH1>
     </FormBanner>
   );
 }

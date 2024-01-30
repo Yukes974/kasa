@@ -20,17 +20,17 @@ function Home() {
   return (
     <main>
       <Banner
-        BannerSource={banner_home}
-        BannerDescription="banner home"
-        BannerTitle="Chez vous, partout et ailleurs"
+        bannerSource={banner_home}
+        bannerDescription="banner home"
+        bannerTitle="Chez vous, partout et ailleurs"
       />
       <ContainerCard>
         {datas.map((logement, index) => {
           return (
             <Card
-              Key={`${logement.host.name}-${index}`}
-              CardTitle={logement.title}
-              CardImage={logement.cover}
+              key={`${logement.id}-${index}`}
+              cardTitle={logement.title}
+              cardImage={logement.cover}
             />
           );
         })}

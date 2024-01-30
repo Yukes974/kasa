@@ -33,8 +33,8 @@ const CardImage = styled.img`
 function Card(props) {
   return (
     <CardBox>
-      <CardTitle>{props.CardTitle}</CardTitle>
-      <CardImage src={props.CardImage} />
+      <CardTitle>{props.cardTitle}</CardTitle>
+      <CardImage src={props.cardImage} />
     </CardBox>
   );
 }
