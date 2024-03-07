@@ -52,7 +52,9 @@ function Slideshow(props) {
         movePictureSlideshow={indexImgSlideShow}
         datasPicturesForSlideshow={props.datasPicturesForSlideshow}
       />
-      {indexImgSlideShow === 0 ? (
+      {nbrTotalImgSlideshow === 1 ? (
+        ""
+      ) : indexImgSlideShow === 0 ? (
         <PreviousImgSlideshow
           onClick={lastImgSlideshow}
           src={arrow_left}
@@ -66,7 +68,9 @@ function Slideshow(props) {
         />
       )}
 
-      {indexImgSlideShow === nbrTotalImgSlideshow - 1 ? (
+      {nbrTotalImgSlideshow === 1 ? (
+        ""
+      ) : indexImgSlideShow === nbrTotalImgSlideshow - 1 ? (
         <NextImgSlideshow
           onClick={firstImgSlideshow}
           src={arrow_right}
