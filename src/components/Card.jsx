@@ -1,7 +1,28 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const ContainerCard = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 340px 340px 340px 340px 340px 340px 340px;
+  gap: 40px;
+  @media all and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    padding: 0;
+    background-color: #ffffff;
+  }
+`;
+
+const CardLink = styled(Link)``;
 
 const CardBox = styled.div`
   position: relative;
+  height: 100%;
   border-radius: 10px;
   border-radius: 10px;
   background: linear-gradient(
@@ -32,10 +53,18 @@ const CardImage = styled.img`
 
 function Card(props) {
   return (
-    <CardBox>
-      <CardTitle>{props.cardTitle}</CardTitle>
-      <CardImage src={props.cardImage} />
-    </CardBox>
+    <ContainerCard>
+      {props.datasJson.map((logement) => {
+        return (
+          <CardLink to={`/logement/${logement.id}`}>
+            <CardBox>
+              <CardTitle>{logement.title}</CardTitle>
+              <CardImage src={logement.cover} />
+            </CardBox>
+          </CardLink>
+        );
+      })}
+    </ContainerCard>
   );
 }
 

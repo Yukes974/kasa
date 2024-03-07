@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import LogoComponent from "./Logo";
 
 const NavBar = styled.div`
@@ -17,7 +17,10 @@ const LogoLink = styled(Link)``;
 
 const Nav = styled.nav`
   display: flex;
-  width: 20%;
+  width: 250px;
+  @media all and (max-width: 767px) {
+    width: 200px;
+  }
 `;
 
 const BlockUl = styled.div`

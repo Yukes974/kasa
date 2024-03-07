@@ -3,11 +3,17 @@ import { useState } from "react";
 import arrow_back from "../assets/arrow_back_ios-24px 3.png";
 import arrow from "../assets/Vector.png";
 
+const BoxCollapseText = styled.div`
+  padding: 20px;
+  background: #f6f6f6;
+`;
+
 const CollapseText = styled.p`
   width: 100%;
   border-radius: 5px;
   margin: 0;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
   background: #f6f6f6;
   color: #ff6060;
   font-family: Montserrat;
@@ -15,6 +21,7 @@ const CollapseText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 142.6%; /* 34.224px */
+  list-style-type: none;
 `;
 
 const BoxCollapseTitleArrow = styled.div`
@@ -29,7 +36,7 @@ const BoxCollapseTitleArrow = styled.div`
 `;
 
 const CollapseTitle = styled.h2`
-  width: 70%;
+  width: 100%;
   height: 100%;
   margin-bottom: 0;
   color: #ffffff;
@@ -38,10 +45,9 @@ const CollapseTitle = styled.h2`
   }
 `;
 
-const CollapseBox = styled.div`
-  width: 100%;
+const BoxCollapse = styled.div`
+  min-width: 100%;
   margin-bottom: 50px;
-  flex-shrink: 0;
 `;
 
 const ImgArrow = styled.img`
@@ -57,11 +63,9 @@ const ImgArrowBack = styled.img`
 function Collapse(props) {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <CollapseBox>
-      <BoxCollapseTitleArrow>
-        <CollapseTitle onClick={() => setIsOpen(!isOpen)}>
-          {props.collapseTitle}
-        </CollapseTitle>
+    <BoxCollapse>
+      <BoxCollapseTitleArrow onClick={() => setIsOpen(!isOpen)}>
+        <CollapseTitle>{props.collapseTitle} </CollapseTitle>
         {isOpen ? (
           <ImgArrow src={arrow} alt=" flêche dirigée vers le haut" />
         ) : (
@@ -69,8 +73,24 @@ function Collapse(props) {
         )}
       </BoxCollapseTitleArrow>
 
-      {isOpen ? <CollapseText>{props.collapseText}</CollapseText> : ""}
-    </CollapseBox>
+      {isOpen ? (
+        typeof props.collapseText == "string" ? (
+          <BoxCollapseText>
+            <CollapseText>{props.collapseText}</CollapseText>
+          </BoxCollapseText>
+        ) : (
+          <BoxCollapseText>
+            <CollapseText>
+              {props.collapseText.map((li) => {
+                return <li>{li}</li>;
+              })}
+            </CollapseText>
+          </BoxCollapseText>
+        )
+      ) : (
+        ""
+      )}
+    </BoxCollapse>
   );
 }
 

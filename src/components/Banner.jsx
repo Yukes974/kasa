@@ -29,6 +29,9 @@ const BannerH1 = styled.h1`
   font-style: normal;
   font-weight: 500;
   line-height: 142.6%; /* 68.448px */
+  @media all and (max-width: 767px) {
+    padding: 0 20px 0 20px;
+  }
 `;
 
 function Banner(props) {
