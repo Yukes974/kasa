@@ -37,24 +37,35 @@ position: absolute;
 
 function Slideshow(props) {
   const nbrTotalImgSlideshow = props.datasPicturesForSlideshow.length;
-  const [indexImgSlideShow, updateIndexImgSlideShow] = useState(0);
+
+  // Dans le cas d'une seule image dans le Slideshow, "nbrTotalImgSlideshow === 1" ne permet pas d'afficher les flèches et les bullets points.
+  const notShowArrowsAndBulletsPoints = nbrTotalImgSlideshow === 1;
+
+  const [indexImgSlideshow, updateindexImgSlideshow] = useState(0);
+
   const previousImgSlideshow = () =>
-    updateIndexImgSlideShow(indexImgSlideShow - 1);
-  const nextImgSlideshow = () => updateIndexImgSlideShow(indexImgSlideShow + 1);
+    updateindexImgSlideshow(indexImgSlideshow - 1);
+
+  const nextImgSlideshow = () => updateindexImgSlideshow(indexImgSlideshow + 1);
+
+  // Calcul du firstImgSlideshow : indexImgSlideshow est équivalent à (nbrTotalImgSlideshow - 1) lorsque le clic est effecuté. On retire "1" pour avoir l'index à "0" et donc arriver à la première image du Slideshow
   const firstImgSlideshow = () =>
-    updateIndexImgSlideShow(indexImgSlideShow - nbrTotalImgSlideshow + 1);
+    updateindexImgSlideshow(nbrTotalImgSlideshow - indexImgSlideshow - 1);
+
+  // Calcul du lastImgSlideshow : indexImgSlideshow est équivalent à "-1" lorsque le clic est effectué. "nbrTotalImgSlideshow -- 1" est équivalent à "nbrTotalImgSlideshow + 1". Puis en retirant "1", on obtient la dernière image du Slideshow.
   const lastImgSlideshow = () =>
-    updateIndexImgSlideShow(nbrTotalImgSlideshow - indexImgSlideShow - 1);
-  console.log(indexImgSlideShow);
+    updateindexImgSlideshow(nbrTotalImgSlideshow - indexImgSlideshow - 1);
+
   return (
     <ContainerSlideshow>
       <ContainersImgsSlideshow
-        movePictureSlideshow={indexImgSlideShow}
+        movePictureSlideshow={indexImgSlideshow}
         datasPicturesForSlideshow={props.datasPicturesForSlideshow}
       />
-      {nbrTotalImgSlideshow === 1 ? (
+
+      {notShowArrowsAndBulletsPoints ? (
         ""
-      ) : indexImgSlideShow === 0 ? (
+      ) : indexImgSlideshow === 0 ? (
         <PreviousImgSlideshow
           onClick={lastImgSlideshow}
           src={arrow_left}
@@ -68,9 +79,9 @@ function Slideshow(props) {
         />
       )}
 
-      {nbrTotalImgSlideshow === 1 ? (
+      {notShowArrowsAndBulletsPoints ? (
         ""
-      ) : indexImgSlideShow === nbrTotalImgSlideshow - 1 ? (
+      ) : indexImgSlideshow === nbrTotalImgSlideshow - 1 ? (
         <NextImgSlideshow
           onClick={firstImgSlideshow}
           src={arrow_right}
@@ -84,9 +95,13 @@ function Slideshow(props) {
         />
       )}
 
-      <PositionImgSlideshow>{`${
-        indexImgSlideShow + 1
-      }/${nbrTotalImgSlideshow}`}</PositionImgSlideshow>
+      {notShowArrowsAndBulletsPoints ? (
+        ""
+      ) : (
+        <PositionImgSlideshow>{`${
+          indexImgSlideshow + 1
+        }/${nbrTotalImgSlideshow}`}</PositionImgSlideshow>
+      )}
     </ContainerSlideshow>
   );
 }

@@ -11,7 +11,7 @@ const ImgSlideShow = styled.img`
 function ImgsSlideshow(props) {
   return (
     <ImgSlideShow
-      src={props.pictureSlideShow}
+      src={props.pictureSlideshow}
       alt="Image du slideshow actuel"
     />
   );

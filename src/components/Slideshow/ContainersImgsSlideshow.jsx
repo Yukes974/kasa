@@ -18,7 +18,7 @@ function ContainersImgsSlideshow(props) {
     >
       {props.datasPicturesForSlideshow.map((picture, index) => {
         return (
-          <ImgsSlideshow key={index} pictureSlideShow={picture}></ImgsSlideshow>
+          <ImgsSlideshow key={index} pictureSlideshow={picture}></ImgsSlideshow>
         );
       })}
     </ContainerImgsSlideshow>
