@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoComponent from "./Logo";
 
 const NavBar = styled.div`
@@ -31,21 +32,6 @@ const BlockUl = styled.div`
   width: 100%;
 `;
 
-const StyledLink = styled(Link)`
-  color: #ff6060;
-  justify-content: flex-end;
-  font-family: Montserrat;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 142.6%; /* 34.224px */
-  text-decoration-line: none;
-  &:hover {
-    cursor: pointer;
-    text-decoration-line: underline;
-  }
-`;
-
 function Header() {
   return (
     <NavBar>
@@ -56,9 +42,31 @@ function Header() {
       </StyledLogo>
       <Nav>
         <BlockUl>
-          <StyledLink to="/">Accueil</StyledLink>
+          <NavLink
+            to="/"
+            style={({ isActive }) => {
+              return {
+                fontSize: isActive ? "24px" : "24px",
+                color: isActive ? "#ff6060" : "#ff6060",
+                textDecorationLine: isActive ? "underline" : "none",
+              };
+            }}
+          >
+            Accueil
+          </NavLink>
 
-          <StyledLink to="/apropos">A Propos</StyledLink>
+          <NavLink
+            to="/apropos"
+            style={({ isActive }) => {
+              return {
+                fontSize: isActive ? "24px" : "24px",
+                color: isActive ? "#ff6060" : "#ff6060",
+                textDecorationLine: isActive ? "underline" : "none",
+              };
+            }}
+          >
+            A Propos
+          </NavLink>
         </BlockUl>
       </Nav>
     </NavBar>
